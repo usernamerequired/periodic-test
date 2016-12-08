@@ -1,41 +1,59 @@
-
-def periodAssignment(): #Gives the period of the atomic number
-    global per #Sets per as a global variable so it can be used elsewhere 
+def originalPeriodAssignment(): #Gives the period of the atomic number
+    global oper #Sets oper as a global variable so it can be used elsewhere 
     if 1 <= oan <= 2:
-        per = int ("1")
+        oper = int ("1")
     elif 3 <= oan <= 10:
-        per = int ("2")
+        oper = int ("2")
     elif 11 <= oan <= 18:
-        per = int ("3")
+        oper = int ("3")
     elif 19 <= oan <= 36:
-        per = int ("4")
+        oper = int ("4")
     elif 37 <= oan <= 54:
-        per = int ("5")
+        oper = int ("5")
     elif 55 <= oan <= 86:
-        per = int ("6")
+        oper = int ("6")
     elif 87 <= oan <= 118:
-        per = int ("7")
+        oper = int ("7")
     else :
         raise ValueError ("Atomic number does not fit!") #Ends program if atomic number is not an integer between 1 and 118
-    print ("Period:", per)
+    print ("Period:", oper)
+    
+def newPeriodAssignment(): #Gives the period of the atomic number of the grounded equivilant to the charged version
+    global per #Sets per as a global variable so it can be used elsewhere 
+    if 1 <= nan <= 2:
+        per = int ("1")
+    elif 3 <= nan <= 10:
+        per = int ("2")
+    elif 11 <= nan <= 18:
+        per = int ("3")
+    elif 19 <= nan <= 36:
+        per = int ("4")
+    elif 37 <= nan <= 54:
+        per = int ("5")
+    elif 55 <= nan <= 86:
+        per = int ("6")
+    elif 87 <= nan <= 118:
+        per = int ("7")
+    else :
+        raise ValueError ("Ionic Charge is not valid") #Ends program if ionic charge given breaks the period assignment
     lastPeriodElectrons()
 
 def lastPeriodElectrons(): #Lists the number of electrons in the last period of the element's position
     global lpe #Sets lpe as a global variable so it can be used elsewhere
     if per == 1:
-        lpe = oan
+        lpe = nan
     elif per == 2:
-        lpe = oan - 2
+        lpe = nan - 2
     elif per == 3:
-        lpe = oan - 10
+        lpe = nan - 10
     elif per == 4:
-        lpe = oan - 18
+        lpe = nan - 18
     elif per == 5:
-        lpe = oan - 36
+        lpe = nan - 36
     elif per == 6:
-        lpe = oan - 54
+        lpe = nan - 54
     elif per == 7:
-        lpe = oan - 86
+        lpe = nan - 86
     else :
         raise RuntimeError ("Something went very wrong, the value for \'per\' does not fit!") #Ends program if value of per is not equal to an integer between 1 and 7
 
@@ -204,19 +222,24 @@ def nobleConfiguration():
         else :
             print ("[Rn] 7s2 5f14 6d10 7p" + str(pev) )
 
+def valenceElectrons():
+    vee = sev + pev
+    print ("Valence electrons: " + str(vee))
+
 def main():
     global oan
+    global nan
     oan = int ( input ("Input atomic number (0 to exit): ") )
     if oan == 0:
         raise SystemExit()
+    ic = int ( input ("Input ionic charge: ") )
     ct = int ( input ("Input configuration type, 0 for full, 1 for noble gas, 2 for both: ") )
     print ("--------------------")
     print ("Atomic number:", oan)
-    periodAssignment()
-    ##ic = int ( input ("Input ionic charge: ") )
-    ##print ("Ionic charge:", ic)
-    ##nan = oan + ic
-    ##print ("Atomic number and charge:", nan)
+    originalPeriodAssignment()
+    print ("Ionic charge:", ic)
+    nan = oan + ic
+    newPeriodAssignment()
     if ct == 0:
         print ("Full electron configuration:")
         fullConfiguration()
@@ -230,7 +253,8 @@ def main():
         nobleConfiguration()
     else :
         print ("Error: improper value")
-    print ("--------------------")
+    valenceElectrons()
+    print ("--------------------\n")
 
 
 
