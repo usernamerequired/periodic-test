@@ -35,7 +35,7 @@ def newPeriodAssignment(): #Gives the period of the atomic number of the grounde
     elif 87 <= nan <= 118:
         per = int ("7")
     else :
-        raise ValueError ("Ionic Charge is not valid") #Ends program if ionic charge given breaks the period assignment
+        raise ValueError ("Ionic Charge is not valid!") #Ends program if ionic charge given breaks the period assignment
     lastPeriodElectrons()
 
 def lastPeriodElectrons(): #Lists the number of electrons in the last period of the element's position
@@ -55,7 +55,7 @@ def lastPeriodElectrons(): #Lists the number of electrons in the last period of 
     elif per == 7:
         lpe = nan - 86
     else :
-        raise RuntimeError ("Something went very wrong, the value for \'per\' does not fit!") #Ends program if value of per is not equal to an integer between 1 and 7
+        raise RuntimeError ("Something went VERY wrong, the value for \'per\' does not fit!") #Ends program if value of per is not equal to an integer between 1 and 7 (This should not happen)
 
 def sBlockElectrons():
     global sev
@@ -252,11 +252,27 @@ def main():
         print ("Noble gas configuration:")
         nobleConfiguration()
     else :
-        raise ValueError("Improper configuration value")
+        raise ValueError("Improper configuration value!")
     valenceElectrons()
     print ("--------------------\n")
 
-
+import sys
+import traceback
+import time
 
 while True:
-    main()
+    try :
+        main()
+    except RuntimeError :
+        sys.exc_info()
+        traceback.print_exc()
+        print ("How did you break it this badly? Ending program!")
+        time.sleep(2)
+        raise SystemExit()
+    except Exception :
+        sys.exc_info()
+        traceback.print_exc()
+        print ("Something went wrong, restarting program!\n")
+        time.sleep(1)
+        pass
+        
