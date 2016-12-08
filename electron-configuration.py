@@ -252,7 +252,7 @@ def main():
         print ("Noble gas configuration:")
         nobleConfiguration()
     else :
-        print ("Error: improper value")
+        raise ValueError("Improper configuration value")
     valenceElectrons()
     print ("--------------------\n")
 
