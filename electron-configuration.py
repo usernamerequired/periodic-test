@@ -15,7 +15,7 @@ def originalPeriodAssignment(): #Gives the period of the atomic number
     elif 87 <= oan <= 118:
         oper = int ("7")
     else :
-        raise ValueError ("Atomic number does not fit!") #Ends program if atomic number is not an integer between 1 and 118
+        raise ValueError ("Atomic number does not fit!")
     print ("Period:", oper)
     
 def newPeriodAssignment(): #Gives the period of the atomic number of the grounded equivilant to the charged version
@@ -35,7 +35,7 @@ def newPeriodAssignment(): #Gives the period of the atomic number of the grounde
     elif 87 <= nan <= 118:
         per = int ("7")
     else :
-        raise ValueError ("Ionic Charge is not valid!") #Ends program if ionic charge given breaks the period assignment
+        raise ValueError ("Ionic Charge is not valid!") 
     lastPeriodElectrons()
 
 def lastPeriodElectrons(): #Lists the number of electrons in the last period of the element's position
@@ -55,7 +55,7 @@ def lastPeriodElectrons(): #Lists the number of electrons in the last period of 
     elif per == 7:
         lpe = nan - 86
     else :
-        raise RuntimeError ("Something went VERY wrong, the value for \'per\' does not fit!") #Ends program if value of per is not equal to an integer between 1 and 7 (This should not happen)
+        raise RuntimeError ("Something went VERY wrong, the value for \'per\' does not fit!") 
 
 def sBlockElectrons():
     global sev
@@ -259,20 +259,27 @@ def main():
 import sys
 import traceback
 import time
+from colorama import init
+from termcolor import colored, cprint
+
+init()
 
 while True:
     try :
         main()
+    except ValueError :
+        sys.exc_info()
+        traceback.print_exc()
+        cprint ("Warning: improper input, please try again.","yellow")
     except RuntimeError :
         sys.exc_info()
         traceback.print_exc()
-        print ("How did you break it this badly? Ending program!")
+        cprint ("Error: How did you break it this badly? Ending program!","red")
         time.sleep(2)
         raise SystemExit()
     except Exception :
         sys.exc_info()
         traceback.print_exc()
-        print ("Something went wrong, restarting program!\n")
+        cprint ("Warning: Something went wrong, restarting program!\n","yellow")
         time.sleep(1)
-        pass
         
