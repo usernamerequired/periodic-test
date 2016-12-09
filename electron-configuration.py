@@ -231,6 +231,8 @@ def main():
     global nan
     oan = int ( input ("Input atomic number (0 to exit): ") )
     if oan == 0:
+        cprint ("Goodbye! Hope this was useful!","green")
+        time.sleep(1)
         raise SystemExit()
     ic = int ( input ("Input ionic charge: ") )
     ct = int ( input ("Input configuration type, 0 for full, 1 for noble gas, 2 for both: ") )
@@ -238,7 +240,7 @@ def main():
     print ("Atomic number:", oan)
     originalPeriodAssignment()
     print ("Ionic charge:", ic)
-    nan = oan + ic
+    nan = oan - ic
     newPeriodAssignment()
     if ct == 0:
         print ("Full electron configuration:")
