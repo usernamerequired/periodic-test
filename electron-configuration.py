@@ -101,6 +101,7 @@ def fBlockElectrons():
 def fullConfiguration():
     if per == 1:
         sBlockElectrons()
+        pBlockElectrons()
         print ("1s" + str(sev))
     elif per == 2:
         sBlockElectrons()
@@ -163,6 +164,7 @@ def fullConfiguration():
 def nobleConfiguration():
     if per == 1:
         sBlockElectrons()
+        pBlockElectrons()
         print ("1s" + str(sev))
     elif per == 2:
         sBlockElectrons()
