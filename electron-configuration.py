@@ -236,12 +236,13 @@ def main():
         cprint ("Goodbye! Hope this was useful!","green")
         time.sleep(1)
         raise SystemExit()
-    ic = int ( input ("Input ionic charge: ") )
+    ##ic = int ( input ("Input ionic charge: ") )
+    ic = 0
     ct = int ( input ("Input configuration type, 0 for full, 1 for noble gas, 2 for both: ") )
     print ("--------------------")
     print ("Atomic number:", oan)
     originalPeriodAssignment()
-    print ("Ionic charge:", ic)
+    ##print ("Ionic charge:", ic)
     nan = oan - ic
     newPeriodAssignment()
     if ct == 0:
