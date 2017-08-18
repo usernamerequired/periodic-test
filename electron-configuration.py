@@ -1,5 +1,5 @@
 def originalPeriodAssignment(): #Gives the period of the atomic number
-    global oper #Sets oper as a global variable so it can be used elsewhere 
+    global oper #Sets oper as a global variable so it can be used elsewhere
     if 1 <= oan <= 2:
         oper = int ("1")
     elif 3 <= oan <= 10:
@@ -17,9 +17,9 @@ def originalPeriodAssignment(): #Gives the period of the atomic number
     else :
         raise ValueError ("Atomic number does not fit!")
     print ("Period:", oper)
-    
+
 def newPeriodAssignment(): #Gives the period of the atomic number of the grounded equivilant to the charged version
-    global per #Sets per as a global variable so it can be used elsewhere 
+    global per #Sets per as a global variable so it can be used elsewhere
     if 1 <= nan <= 2:
         per = int ("1")
     elif 3 <= nan <= 10:
@@ -35,7 +35,7 @@ def newPeriodAssignment(): #Gives the period of the atomic number of the grounde
     elif 87 <= nan <= 118:
         per = int ("7")
     else :
-        raise ValueError ("Ionic Charge is not valid!") 
+        raise ValueError ("Ionic Charge is not valid!")
     lastPeriodElectrons()
 
 def lastPeriodElectrons(): #Lists the number of electrons in the last period of the element's position
@@ -55,7 +55,7 @@ def lastPeriodElectrons(): #Lists the number of electrons in the last period of 
     elif per == 7:
         lpe = nan - 86
     else :
-        raise RuntimeError ("Something went VERY wrong, the value for \'per\' does not fit!") 
+        raise RuntimeError ("Something went VERY wrong, the value for \'per\' does not fit!")
 
 def sBlockElectrons():
     global sev
@@ -70,13 +70,13 @@ def pBlockElectrons():
         pev = 0
     else :
         if 4 <= per <= 7:
-            if 1 <= dev <= 10:
+            if 0 <= dev <= 10:
                 pev = 0
             else :
                 pev = dev - 10
         else :
             pev = lpe - 2
-    
+
 
 def dBlockElectrons():
     global dev
@@ -146,7 +146,7 @@ def fullConfiguration():
         elif pev == 0:
             print ("1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d" + str(dev) )
         else :
-            print ("1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p" + str(pev) )   
+            print ("1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6s2 4f14 5d10 6p" + str(pev) )
     elif per == 7:
         sBlockElectrons()
         fBlockElectrons()
@@ -159,7 +159,7 @@ def fullConfiguration():
         elif pev == 0:
             print ("1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6p2 4f14 5d10 6p6 7s2 5f14 6d" + str(dev) )
         else :
-            print ("1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6p2 4f14 5d10 6p6 7s2 5f14 6d10 7p" + str(pev) )    
+            print ("1s2 2s2 2p6 3s2 3p6 4s2 3d10 4p6 5s2 4d10 5p6 6p2 4f14 5d10 6p6 7s2 5f14 6d10 7p" + str(pev) )
 
 def nobleConfiguration():
     if per == 1:
@@ -209,7 +209,7 @@ def nobleConfiguration():
         elif pev == 0:
             print ("[Xe] 6s2 4f14 5d" + str(dev) )
         else :
-            print ("[Xe] 6s2 4f14 5d10 6p" + str(pev) )   
+            print ("[Xe] 6s2 4f14 5d10 6p" + str(pev) )
     elif per == 7:
         sBlockElectrons()
         fBlockElectrons()
@@ -287,4 +287,3 @@ while True:
         traceback.print_exc()
         cprint ("Warning: Something went wrong, restarting program!\n","yellow")
         time.sleep(1)
-        
