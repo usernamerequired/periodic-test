@@ -17,6 +17,7 @@ def originalPeriodAssignment(): #Gives the period of the atomic number
     else :
         raise ValueError ("Atomic number does not fit!")
     print ("Period:", oper)
+    cprint ("Period: " + str(oper),"cyan")
 
 def newPeriodAssignment(): #Gives the period of the atomic number of the grounded equivilant to the charged version
     global per #Sets per as a global variable so it can be used elsewhere
@@ -36,6 +37,7 @@ def newPeriodAssignment(): #Gives the period of the atomic number of the grounde
         per = int ("7")
     else :
         raise ValueError ("Ionic Charge is not valid!")
+    cprint ("Adjusted period: " + str(per),"cyan")
     lastPeriodElectrons()
 
 def lastPeriodElectrons(): #Lists the number of electrons in the last period of the element's position
@@ -63,6 +65,7 @@ def sBlockElectrons():
         sev = 1
     else :
         sev = 2
+    cprint ("S-block electrons: " + str(sev),"cyan")
 
 def pBlockElectrons():
     global pev
@@ -76,6 +79,7 @@ def pBlockElectrons():
                 pev = dev - 10
         else :
             pev = lpe - 2
+    cprint ("P-block electrons: " + (str(pev) or 0),"cyan")
 
 
 def dBlockElectrons():
@@ -90,6 +94,7 @@ def dBlockElectrons():
                 dev = fev - 14
         else :
             dev = lpe - 2
+    cprint ("D-block electrons: " + (str(dev) or 0),"cyan")
 
 def fBlockElectrons():
     global fev
@@ -97,6 +102,7 @@ def fBlockElectrons():
         fev = 0
     else :
         fev = lpe - 2
+    cprint ("F-block electrons: " + (str(fev) or 0),"cyan")
 
 def fullConfiguration():
     if per == 1:
@@ -228,23 +234,28 @@ def valenceElectrons():
     global vee
     vee = sev + pev
     print ("Valence electrons: " + str(vee))
+    cprint ("Valence electrons: " + str(vee),"cyan")
 
 def main():
     global oan
     global nan
     oan = int ( input ("Input atomic number (0 to exit): ") )
+    cprint ("User input: " + str(oan),"cyan")
     if oan == 0:
         cprint ("Goodbye! Hope this was useful!","green")
         time.sleep(1)
         raise SystemExit()
     ##ic = int ( input ("Input ionic charge: ") )
     ic = 0
+    cprint ("Ionic charge value: " + str(ic),"cyan")
     ct = int ( input ("Input configuration type, 0 for full, 1 for noble gas, 2 for both: ") )
+    cprint ("Configuration input: " + str(ct),"cyan")
     print ("--------------------")
     print ("Atomic number:", oan)
     originalPeriodAssignment()
     ##print ("Ionic charge:", ic)
     nan = oan - ic
+    cprint ("Adjusted atomic number: " + str(nan),"cyan")
     newPeriodAssignment()
     if ct == 0:
         print ("Full electron configuration:")
@@ -261,19 +272,6 @@ def main():
         raise ValueError("Improper configuration value!")
     valenceElectrons()
     print ("--------------------\n")
-    cprint ("Debug information\n","cyan")
-    cprint ("User input: " + str(oan),"cyan")
-    cprint ("Period: " + str(oper),"cyan")
-    cprint ("Ionic charge value: " + str(ic),"cyan")
-    cprint ("Adjusted atomic number: " + str(nan),"cyan")
-    cprint ("Adjusted period: " + str(per),"cyan")
-    cprint ("Configuration input: " + str(ct),"cyan")
-    cprint ("S-block electrons: " + str(sev),"cyan")
-    cprint ("P-block electrons: " + str(pev),"cyan")
-    cprint ("D-block electrons: " + str(dev),"cyan")
-    cprint ("F-block electrons: " + str(fev),"cyan")
-    cprint ("Valence electrons: " + str(vee),"cyan")
-    cprint ("\nEnd debug \n","cyan")
 
 import sys
 import traceback
